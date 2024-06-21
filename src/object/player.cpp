@@ -1320,19 +1320,10 @@ Player::do_jump(float yspeed) {
   // jump only if it would make Tux go faster upwards
   if (m_physic.get_velocity_y() > yspeed) {
     m_physic.set_velocity_y(yspeed * (m_sliding ? 0.75f : 1.f));
-    //bbox.move(Vector(0, -1));
+
     m_jumping = true;
     m_on_ground_flag = false;
     m_can_jump = false;
-
-    /*if (m_sliding)
-    {
-      if (!adjust_height(is_big() ? BIG_TUX_HEIGHT : SMALL_TUX_HEIGHT)) {
-        m_duck = true;
-      }
-      m_sliding = false;
-      m_slidejumping = false;
-    }*/
 
     // play sound
     if (is_big()) {
@@ -1710,7 +1701,7 @@ Player::position_grabbed_object(bool teleport)
 bool
 Player::try_grab()
 {
-  if (m_controller->hold(Control::ACTION) && !m_grabbed_object && !m_duck && !m_released_object)
+  if (m_controller->hold(Control::ACTION) && !m_grabbed_object && !m_released_object)
   {
 
     Vector pos(0.0f, 0.0f);
